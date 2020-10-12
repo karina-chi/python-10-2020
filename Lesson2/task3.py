@@ -18,13 +18,12 @@ else:
     print("Это осенний месяц.")
 
 month_2 = int(input("Введите месяц в виде целого числа от 1 до 12: "))
-seasons_dict = {"winter":[12, 1, 2], "spring":[3, 4, 5], "summer":[6, 7, 8]}
-
-if month_2 in seasons_dict.get("winter"):
-    print("Это зимний месяц.")
-if month_2 in seasons_dict.get("spring"):
-    print("Это весенний месяц.")
-if month_2 in seasons_dict.get("summer"):
-    print("Это летний месяц.")
-else:
-    print("Это осенний месяц.")
+seasons_dict = {
+    "зима":[12, 1, 2],
+    "весна":[3, 4, 5],
+    "лето":[6, 7, 8],
+    "осень":[9, 10, 11]
+}
+for seasons, months in seasons_dict.items():
+    if month_2 in months:
+        print(f'Время года - {seasons}.')
