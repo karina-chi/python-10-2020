@@ -3,14 +3,10 @@
 # При нечетном количестве элементов последний сохранить на своем месте.
 # Для заполнения списка элементов необходимо использовать функцию input().
 
-new_list = []
-
-for i in range(5):
-    new_list.append(int(input("Введите любое положительное целое число: ")))
-print(new_list)
+items = input("Укажите значения списка через запятую:").split(",")
 
 a = 0
-for i in range(int(len(new_list)/2)):
-  new_list[a], new_list[a+1] = new_list[a+1], new_list[a]
+for i in range(int(len(items)/2)):
+  items[a], items[a+1] = items[a+1], items[a]
   a += 2
-print(new_list)
+print(items)
