@@ -7,6 +7,9 @@
 
 def fact(number):
     x = 1
+    if number <= 0:
+        yield x
+        
     for el in range(1, number + 1):
         x *= el
         yield x
