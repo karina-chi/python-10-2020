@@ -8,9 +8,6 @@ from functools import reduce
 new_list = [el for el in range(100, 1001) if el % 2 == 0]
 print(new_list)
 
-result_multiplication = reduce(
-    lambda a, b: a * b,
-    new_list
-)
+result_multiplication = reduce(lambda a, b: a * b, new_list, 1)
 
 print(result_multiplication)
