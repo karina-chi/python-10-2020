@@ -5,13 +5,13 @@
 from sys import argv
 
 script, production, rate, premium = argv
-a = int(production)
-b = int(rate)
-c = int(premium)
+a = float(production)
+b = float(rate)
+c = float(premium)
 
 
 def salary_calculation(hours, rate_in_hour, additional_money):
     return hours * rate_in_hour + additional_money
 
 
-print(salary_calculation(a, b, c))
+print(f'Заработная плата сотрудника составляет {salary_calculation(a, b, c)}')
