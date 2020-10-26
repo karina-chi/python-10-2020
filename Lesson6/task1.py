@@ -9,25 +9,35 @@
 # Задачу можно усложнить, реализовав проверку порядка режимов,
 # и при его нарушении выводить соответствующее сообщение и завершать скрипт.
 
-from time import sleep
+import time
+import itertools
 
 
 class TrafficLight:
-    __color = ['Красный', 'Желтый', 'Зеленый']
+    __color = str
+    __timing = dict
+
+    def __init__(self, red_time: int = 7, yellow_time: int = 2, green_time: int = 5):
+        self.__timing = {
+            "red": red_time,
+            "yellow": yellow_time,
+            "green": green_time
+        }
 
     def running(self):
-        i = 0
-        while i < 3:
-            print(f'Светофор переключается: \n '
-                  f'{TrafficLight.__color[i]}')
-            if i == 0:
-                sleep(7)
-            elif i == 1:
-                sleep(2)
-            elif i == 2:
-                sleep(7)
-            i += 1
+        for mode, timer in itertools.cycle(self.__timing.items()):
+            self.__color = mode
+
+            for second in range(timer):
+                print(f'{self} [{second + 1}]')
+                time.sleep(1)
+
+    def __repr__(self):
+        return f"Текущий режим = {self.__color}"
 
 
-a = TrafficLight()
-a.running()
+try:
+    traffic_light = TrafficLight(7, 2, 5)
+    traffic_light.running()
+except KeyboardInterrupt:
+    print("Exit the program")
