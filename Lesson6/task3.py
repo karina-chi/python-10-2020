@@ -9,8 +9,12 @@
 # (создать экземпляры класса Position, передать данные, проверить значения атрибутов, вызвать методы экземпляров).
 
 class Worker:
+    name: str
+    surname: str
+    position: str
+    _income: dict
 
-    def __init__(self, name, surname, position, wage, bonus):
+    def __init__(self, name: str, surname: str, position: str, wage: int, bonus: int):
         self.name = name
         self.surname = surname
         self.position = position
@@ -19,18 +23,15 @@ class Worker:
 
 class Position(Worker):
 
-    def __init__(self, name, surname, position, wage, bonus):
-        super().__init__(name, surname, position, wage, bonus)
-
     def get_full_name(self):
-        return self.name + ' ' + self.surname
+        return f'{self.name} {self.surname}'
 
     def get_total_income(self):
-        return self._income.get('wage') + self._income.get('bonus')
-        # return f'{sum(self._income.values())}'
+        return sum(self._income.values())
 
 
-a = Position('Андрей', 'Андреев', 'менеджер', 10000, 10000)
-print(a.get_full_name())
-print(a.position)
-print(a.get_total_income())
+andrey = Position('Андрей', 'Андреев', 'менеджер', 10000, 10000)
+print(andrey.get_full_name(), andrey.get_total_income())
+
+katya = Position('Катя', 'Соколова', 'бухгалтер', 20000, 10000)
+print(katya.get_full_name(), katya.get_total_income())
